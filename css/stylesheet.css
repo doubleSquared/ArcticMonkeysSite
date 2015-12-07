@@ -87,7 +87,7 @@ img{
 p{
   line-height: 3rem;
 }
-#footer 
+footer
 {
   
   position: relative;
@@ -178,7 +178,7 @@ body #gallery .gallery
 }
 body #gallery img:hover
 {
-   box-shadow: 0px 0px 5px rgba(255,255,255,0.8);
+   box-shadow: 0 0 5px rgba(255,255,255,0.8);
 }
 body #videos
 {
