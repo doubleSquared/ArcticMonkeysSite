@@ -1,0 +1,250 @@
+@import url('http://fonts.googleapis.com/css?family=Droid+Serif');
+@import url('http://fonts.googleapis.com/css?family=Nunito');
+
+  html{
+  font-size: 62.5%;
+}
+
+
+/* Background */
+body{
+  font-family: "Droid Serif", "Times New Roman", serif;
+  background-color:black;
+  background-image: url('../images/background.jpg');
+  background-size: 100%;;
+  background-repeat:repeat-y;
+  background-attachment: scroll;
+  font-size:1.6rem;
+  line-height: 2rem;
+  
+}
+a{
+  color:rgba(255,255,255,.75);
+  text-decoration: none;
+}
+a:hover{
+  color: white;
+  
+}
+a:active{
+  color: rgba(255,255,255,0.85);
+}
+
+h1{
+  font-family: Nunito, "Times New Roman", sans-serif;
+  font-size: 3rem;
+  text-align: center;
+  color:rgba(255,255,255,0.75);
+  text-transform:uppercase;
+  padding:1.5rem;
+  border-color: rgba(255,255,255,0.35);
+  border-style:double; 
+}
+h2{
+    font-family: Nunito, "Times New Roman", sans-serif;
+    font-size: 2.2rem;
+    color:rgba(255,255,255,0.6);
+    text-transform:uppercase;
+    padding-bottom: 0.5rem;
+    border-bottom: thin solid rgba(255,255,255,0.5);
+
+}
+h3{
+  font-family: Nunito, "Times New Roman", sans-serif;
+  font-size:1.8rem;
+  color:rgba(255,255,255,0.6);
+}
+
+/*wrapper of the page*/
+body #wrapper{
+  width: 70%;
+  min-height: 100%;
+  background-color: rgba(0,0,0,0.85);
+  background-attachment: scroll;
+  
+  margin-left:auto;
+  margin-right:auto;
+  
+  border: 3px solid rgba(255,255,255,.1);
+  border-radius: 0.5em;
+  padding: 20px;
+  
+  box-shadow:0 10px 4px rgba(255, 255, 255, 0.3);
+  
+  
+  
+  
+}
+body #content
+{
+  display:inline-block;
+  color:rgba(255,255,255,.5); 
+}
+
+img{
+  width: 350px;
+}
+p{
+  line-height: 3rem;
+}
+#footer 
+{
+  
+  position: relative;
+  background-color: rgba(0,0,0,0.8);
+  color: rgba(255,255,255,.40);
+  font-size:1.4rem;
+  letter-spacing: 0.7rem;
+  text-align: center;
+  line-height: 25px;
+  border-radius: 0.8rem;
+}
+#menu
+{
+  width: 75%;
+  display:inline-block;
+}
+nav {
+  
+  position: relative;
+  
+}
+nav ul{
+  list-style-type: none;
+  text-align: center;
+}
+
+nav ul li{
+  display: inline-block;
+  font-size:1.8rem;
+  line-height: 2.5rem;
+  text-transform: uppercase;
+  color:rgba(255,255,255,.25);
+  border-style: double;
+  border-color: rgba(255,255,255,.30);
+}
+
+nav ul li a{
+  text-align:center;
+  display: inline-block;
+  padding: 30px 20px 30px 20px;
+  color: rgba(255,255,255,.40);
+}
+nav ul li.active
+{
+  padding: 30px 20px 30px 20px;
+  border-style:dotted;
+}
+nav ul li a:hover
+{
+  color:white;
+}
+
+#news ul{
+  list-style-type: none;
+}
+
+body #content #textImg
+{
+  width:40%;
+  float:left;
+  display: inline-block;
+  position: relative;
+  padding: 20px;
+  
+}
+body #content #textImg img
+{
+  
+  width:100%;
+}
+body #content #text
+{
+  width: 55%;
+  display:inline-block;
+}
+  
+body #gallery
+{
+  text-align: center;
+}
+body #gallery .gallery
+{
+  display: inline-block;
+  width:47%;
+  padding: 0.2rem;
+  margin-left: auto;
+  margin-right: auto;  
+}
+body #gallery img:hover
+{
+   box-shadow: 0px 0px 5px rgba(255,255,255,0.8);
+}
+body #videos
+{
+  text-align:center;
+}
+body #videos .video
+{
+  padding:20px;
+  display: inline-block;
+}
+#discography #albums ul{
+  list-style-type: none;
+}
+
+body #content #discography #albums ul{
+  display:block;
+}
+body #content #discography #albums li{
+  display: inline-block;
+}
+body #content #discography .album
+{
+  width:25%;
+  float:left;
+  padding:10px;
+  box-shadow: 0 0 2px;
+  margin:auto;
+  margin-right:10px;
+}
+body #content #discography blockquote
+{
+  display:inline-block;
+  width:70%;
+  margin:auto;
+}
+body #content #external
+{
+  position: relative;
+  width:100%;
+  padding: 10px;
+  text-align: center;
+}
+body #content #external figure
+{
+  display:inline-block;
+  position: relative;
+  text-align: center;
+  width:25%;
+  
+}
+body #content #external img{
+  padding: 5px;
+  width:70%;
+}
+body #content #external img:hover{
+  box-shadow: 0 0 5px;
+}
+
+body #content #external figure figcaption
+{
+  font-size: 1.1rem
+}
+.logo
+{
+  float:left;
+  /* proportions checked */
+  width:25%;
+  height:117px;
+}
