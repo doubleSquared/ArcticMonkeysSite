@@ -79,8 +79,18 @@ body #content
 {
   display:inline-block;
   color:rgba(255,255,255,.5); 
+  width: 100%
 }
-
+td
+{
+	display: inline-block;
+	color: rgba(255,255,255,.5);
+	padding: 4px;
+}
+tr{
+	margin-bottom: 3px;
+	margin-top: 3px;
+}
 img{
   width: 350px;
 }
@@ -247,4 +257,8 @@ body #content #external figure figcaption
   /* proportions checked */
   width:25%;
   height:117px;
+}
+.error 
+{
+	color: #FF0000;
 }
