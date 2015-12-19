@@ -25,8 +25,16 @@
             </nav>
         </div>
     </header>
+    <div id="content">
+        <h1>Comments</h1>
+        <div id="comments">
+
+        </div>
+    </div>
+
+    <footer><small>Copyright &copy; 2015 - <a href="mailto:lathanag@csd.auth.gr">Athanasios Lagopoulos</a></small></footer>
 </div>
 
 </body>
-<footer><small>Copyright &copy; 2015 - <a href="mailto:lathanag@csd.auth.gr">Athanasios Lagopoulos</a></small></footer>
+
 </html>
