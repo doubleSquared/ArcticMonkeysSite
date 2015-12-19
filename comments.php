@@ -21,6 +21,7 @@
 						   <li id="menuDiscography"><a href="news.html">Discography</a></li>
 						   <li id="menuBio"><a href="bio.html">Bio</a></li>
 						   <li id="menuComments" class="active">Comments</li>
+                            <li id="menuQuiz"><a href="quiz.php">Quiz</a> </li>
 						</ul>
 					</nav>
 				</div>
