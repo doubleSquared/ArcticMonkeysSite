@@ -10,7 +10,7 @@
 </head>
 <body>
 <?php
-include("connection.php");
+include("connectionSakis.php");
 $query = " SELECT ID, Question, Answer_1, Answer_2, Answer_3, Answer_4 FROM `questions`";
 $results = mysqli_query($link,$query);
 $num_results = mysqli_num_rows($results);

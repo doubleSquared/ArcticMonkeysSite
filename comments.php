@@ -53,7 +53,7 @@
 			</div>
 			
 			<?php
-				include("connection.php"); 
+				include("connection.php");
 
 				$query = "SELECT * FROM comments";
 				$results = mysqli_query($link, $query);
