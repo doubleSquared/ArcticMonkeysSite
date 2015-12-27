@@ -1,5 +1,4 @@
 <?php
-
 	$link = @mysqli_connect("localhost","syfantid","3Bm2BsFilms10%", "syfantid_");
 
 	if (!$link) {
@@ -8,4 +7,3 @@
 		exit(); 
 	}
 ?>
-

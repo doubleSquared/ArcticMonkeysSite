@@ -71,9 +71,6 @@ body #wrapper{
   
   box-shadow:0 10px 4px rgba(255, 255, 255, 0.3);
   
-  
-  
-  
 }
 body #content
 {
@@ -123,8 +120,7 @@ nav ul{
   list-style-type: none;
   text-align: center;
 }
-
-nav ul li{
+nav ul li, body #content .button{
   display: inline-block;
   font-size:1.8rem;
   line-height: 2.5rem;
@@ -133,8 +129,7 @@ nav ul li{
   border-style: double;
   border-color: rgba(255,255,255,.30);
 }
-
-nav ul li a{
+nav ul li a, body #content .button{
   text-align:center;
   display: inline-block;
   padding: 15px 5px 15px 5px;
@@ -145,11 +140,13 @@ nav ul li.active
   padding: 15px 5px 15px 5px;
   border-style:dotted;
 }
-nav ul li a:hover
+nav ul li a:hover, body #content .button:hover
 {
   color:white;
 }
-
+body #content .button {
+	margin: 5px 0px 15px 0px;
+}
 #news ul{
   list-style-type: none;
 }
@@ -249,7 +246,15 @@ body #content #external img:hover{
 
 body #content #external figure figcaption
 {
-  font-size: 1.1rem
+	font-size: 1.1rem
+}
+body #content #time
+{
+	font-size: 1.2rem;
+}
+body #content .disabled 
+{
+	visibility: hidden;
 }
 .logo
 {
