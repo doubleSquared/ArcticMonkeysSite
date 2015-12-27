@@ -10,7 +10,9 @@
 </head>
 <body>
 <?php
-include("connectionSakis.php");
+
+
+include("connection.php");
 $query = " SELECT ID, Question, Answer_1, Answer_2, Answer_3, Answer_4 FROM `questions`";
 $results = mysqli_query($link,$query);
 $num_results = mysqli_num_rows($results);
@@ -37,6 +39,10 @@ $num_results = mysqli_num_rows($results);
         <h1 >Quiz</h1>
         <div id="quiz">
 
+            <div id="question">
+                <div id="score">
+                </div>
+
                 <?php
 
                 while ($que = mysqli_fetch_array($results)) {
@@ -47,29 +53,22 @@ $num_results = mysqli_num_rows($results);
                     $Answer2 = $que['Answer_2'];
                     $Answer3 = $que['Answer_3'];
                     $Answer4 = $que['Answer_4'];
-                    echo
-                        '
-                <div id="question">
-                <form id="question'. $ID . '">
-                <fieldset>
-                <legend id="qNumber">Question Number</legend>
-                <label>
-                    <p><h3>' . $Question . '</h3></p>
-                </label>
-                <input type="radio" name="answer" value="1">' . $Answer1 . '
-                <br>
-                <input type="radio" name="answer" value="2">' . $Answer2 . '
-                <br>
-                <input type="radio" name="answer" value="3">' . $Answer3 . '
-                <br>
-                <input type="radio" name="answer" value="4">' . $Answer4 . '
-                <br>
-                </fieldset>
-                <button type="button" onclick="next()">Check Answer</button>
-                </form>
-                </div>';
+                    echo '<form id="question'. $ID . '" >';
+                    echo '<label><p><h3>' . $Question . '</h3></p></label>';
+                    echo '<input type="radio" name="answer'. $ID .'" value="1" >' . $Answer1 . '<br>';
+                    echo '<input type="radio" name="answer'. $ID .'" value="2" >' . $Answer2 . '<br>';
+                    echo '<input type="radio" name="answer'. $ID .'" value="3" >' . $Answer3 . '<br>';
+                    echo '<input type="radio" name="answer'. $ID .'" value="4" >' . $Answer4 . '<br>';
+                    echo '</form>';
                 }
                 ?>
+                <img class="imgquiz" id="correct" src="images/correct.png" alt="Correct">
+                <img class="imgquiz" id="incorrect" src="images/incorrect.png" alt="Inorrect">
+            </div>
+            <button id="checkButton" type="button">Check Answer</button>
+            <small id="qNumber">Question Number</small>
+
+
 
 
 

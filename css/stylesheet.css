@@ -256,6 +256,54 @@ body #content .disabled
 {
 	visibility: hidden;
 }
+body #content #question
+{
+  
+  padding: 1.5rem;
+  border-color: rgba(255,255,255,0.35);
+  border-style:double; 
+  border-radius:1.2rem;
+}
+body #content #question form
+{
+  display: inline-block;
+  width: 80%;
+}
+#checkButton
+{
+  font-family: "Nunito";
+  font-size: 1.6rem;
+  display: inline-block;
+  float: right;
+  background-color: rgba(0,0,0,0.85);
+  color: rgba(255,255,255,0.60);
+  border-color: rgba(255,255,255,0.50);
+  border-style:outset;
+  margin: 1rem;
+  box-shadow: 0 0 2px 0;
+  
+}
+#qNumber
+{
+  font-family: "Nunito";
+  font-size: 1.6rem;
+  display: inline-block;
+  float: right;
+  margin: 1rem;
+}
+.imgquiz
+{
+  width: 15%;
+  display: inline-block;
+  position: relative;
+  
+}
+#score #avatars{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .logo
 {
   float:left;
