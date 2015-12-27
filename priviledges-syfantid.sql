@@ -1,0 +1,5 @@
+# Privileges for `syfantid`@`127.0.0.1`
+
+GRANT USAGE ON *.* TO 'syfantid'@'127.0.0.1' IDENTIFIED BY PASSWORD '*D6FBBEF22CEC2CCEF6DD5E613816DBC969602F80';
+
+GRANT SELECT, INSERT ON `syfantid_`.* TO 'syfantid'@'127.0.0.1';

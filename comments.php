@@ -86,8 +86,8 @@
 					$query = "SELECT * FROM comments LIMIT $limit OFFSET $offset";
 					$results = mysqli_query($link, $query);
 					while ($row = mysqli_fetch_assoc($results)) {
-						$email = htmlspecialchars($row['email']);
-						$comment = htmlspecialchars($row['comment']);
+						$email = htmlspecialchars($row['email']); // Preventing XSS
+						$comment = htmlspecialchars($row['comment']); // Preventing XSS
 						$timestamp = date('j F Y',strtotime(htmlspecialchars($row['timestamp'])));
 						if($email == "") {
 							$email = "Anonymous";
@@ -119,12 +119,13 @@
 					/* Send data to DB */		
 					if (isset($_GET['submit']) ? $_GET['submit'] : null) {
 						if (isset($_GET['comment'])) {
-							$comment = addslashes($_GET['comment']);
-							$email = addslashes($_GET['email']);
+							$comment = addslashes($_GET['comment']); // Preventing SQL Injection
+							$email = addslashes($_GET['email']); // Preventing SQL Injection
 							$query = "INSERT INTO comments (email, comment) VALUES ('$email','$comment')";
 							$results = mysqli_query($link, $query);
 						}
 					}
+					@mysqli_free_result($results);
 					@mysqli_close($link);
 				?>	
 			</div>
