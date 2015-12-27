@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
-      xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <title>Arctic Monkeys - Quiz</title>
     <meta charset="utf-8"/>
@@ -62,8 +61,8 @@ $num_results = mysqli_num_rows($results);
                     echo '</form>';
                 }
                 ?>
-                <img class="imgquiz" id="correct" src="images/correct.png" alt="Correct">
-                <img class="imgquiz" id="incorrect" src="images/incorrect.png" alt="Inorrect">
+                <img class="imgquiz" id="correct" src="images/correct.png" alt="Correct"/>
+                <img class="imgquiz" id="incorrect" src="images/incorrect.png" alt="Inorrect"/>
             </div>
             <button id="checkButton" type="button">Check Answer</button>
             <small id="qNumber">Question Number</small>

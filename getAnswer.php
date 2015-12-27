@@ -1,7 +1,7 @@
 
 <?php
 
-include ("connectionSakis.php");
+include ("connection.php");
 //get parameters from url
 $ID = $_REQUEST["ID"];
 $answer = $_REQUEST["An"];
