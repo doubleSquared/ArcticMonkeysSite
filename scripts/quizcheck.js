@@ -52,6 +52,9 @@ function hideSymbols() {
  * Loads the next question
  */
 function next() {
+    var check_button = document.getElementById("checkButton");//changing the button text to Check Answer
+    check_button.innerHTML="Check Answer";
+    check_button.disabled = false; //enable
     hideSymbols();
     var flag = false;
     var rand;
@@ -177,6 +180,9 @@ function showResult(result) {
     else {
         document.getElementById("incorrect").style.display = "inline"; //showing the "incorrect" image
     }
+    var check_button = document.getElementById("checkButton");//changing the button text to "wait"
+    check_button.innerHTML = "Wait......";
+    check_button.disabled = true; //disabling while waiting - debug
     setTimeout(next, 1500);//timeout till the next question appears
 }
 /**

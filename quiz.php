@@ -54,10 +54,10 @@ $num_results = mysqli_num_rows($results);
                     $Answer4 = $que['Answer_4'];
                     echo '<form id="question'. $ID . '" >';
                     echo '<label><p><h3>' . $Question . '</h3></p></label>';
-                    echo '<input type="radio" name="answer'. $ID .'" value="1" >' . $Answer1 . '<br>';
-                    echo '<input type="radio" name="answer'. $ID .'" value="2" >' . $Answer2 . '<br>';
-                    echo '<input type="radio" name="answer'. $ID .'" value="3" >' . $Answer3 . '<br>';
-                    echo '<input type="radio" name="answer'. $ID .'" value="4" >' . $Answer4 . '<br>';
+                    echo '<label><input type="radio" name="answer'. $ID .'" value="1" >' . $Answer1 . '</label><br>';
+                    echo '<label><input type="radio" name="answer'. $ID .'" value="2" >' . $Answer2 . '</label><br>';
+                    echo '<label><input type="radio" name="answer'. $ID .'" value="3" >' . $Answer3 . '</label><br>';
+                    echo '<label><input type="radio" name="answer'. $ID .'" value="4" >' . $Answer4 . '</label><br>';
                     echo '</form>';
                 }
                 ?>
