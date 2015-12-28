@@ -120,7 +120,7 @@ nav ul{
   list-style-type: none;
   text-align: center;
 }
-nav ul li, body #content .button{
+nav ul li{
   display: inline-block;
   font-size:1.8rem;
   line-height: 2.5rem;
@@ -129,7 +129,7 @@ nav ul li, body #content .button{
   border-style: double;
   border-color: rgba(255,255,255,.30);
 }
-nav ul li a, body #content .button{
+nav ul li a{
   text-align:center;
   display: inline-block;
   padding: 15px 5px 15px 5px;
@@ -145,7 +145,7 @@ nav ul li a:hover, body #content .button:hover
   color:white;
 }
 body #content .button {
-	margin: 5px 0px 15px 0px;
+	margin: 5px 0 15px 0;
 }
 #news ul{
   list-style-type: none;
@@ -254,7 +254,38 @@ body #content #time
 }
 body #content .disabled 
 {
-	visibility: hidden;
+	visibility: hidden
+}
+input[type=email], textarea
+{
+  color: rgba(255,255,255,0.8);
+  background-color: rgba(0,0,0,0.6);
+}
+input[type=submit]
+{
+  font-family: "Nunito";
+  font-size: 1.6rem;
+  background-color: rgba(0,0,0,0.85);
+  color: rgba(255,255,255,0.60);
+  border-color: rgba(255,255,255,0.50);
+  border-style:outset;
+  margin-left: 75%;
+  margin-right: 25%;
+  box-shadow: 0 0 2px 0;
+}
+body #content .button
+{
+  display: inline-block;
+  font-family: "Nunito";
+  font-size: 1.6rem;
+  background-color: rgba(0,0,0,0.85);
+  color: rgba(255,255,255,0.60);
+  border-color: rgba(255,255,255,0.50);
+  border-style:outset;
+  border-radius: 0.8rem;
+  padding: 5px;
+  margin: 2px;
+  
 }
 body #content #question
 {

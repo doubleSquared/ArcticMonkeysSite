@@ -1,188 +1,207 @@
 //Load ajax connection
 window.onload = initializeAjax();
+
+//hide unnecessary images
 window.onload = hideSymbols();
 
+//hide score image
+document.getElementById("score").style.display = "none";
+
 //number of total questions
-    nQuestions = 10;
+nQuestions = 10;
 
 //question form's ids
-    questions = ["question1", "question2", "question3", "question4", "question5", "question6", "question7", "question8", "question9"
-        , "question10"];
+questions = ["question1", "question2", "question3", "question4", "question5", "question6", "question7", "question8", "question9"
+    , "question10"];
 
 //hide all the questions
-    for (var i = 0; i < nQuestions; i++) {
-        var hide = document.getElementById(questions[i]);
-        hide.style.display = "none";
-    }
-//hide score image
-document.getElementById("score").style.display="none";
-
+for (var i = 0; i < nQuestions; i++) {
+    var hide = document.getElementById(questions[i]);
+    hide.style.display = "none";
+}
 
 
 //random question to be appeared
-    var rand = Math.floor((Math.random() * 10)); //random number from 0 to 9
+var rand = Math.floor((Math.random() * 10)); //random number from 0 to 9
+var current_form = document.getElementById(questions[rand]);
+current_form.style.display = "inline-block";
 
-    var current_form = document.getElementById(questions[rand]);
-    current_form.style.display = "inline-block";
 
-    count_ques = 1;
-    past_ques = [rand];
-    var legend_que =document.getElementById("qNumber");
-    legend_que.innerHTML = count_ques + "/" + nQuestions;
+//count of current question
+count_ques = 1;
+//stack with questions that already been appeared
+past_ques = [rand];
 
-//score variable
-var score=0;
+//show the current number of question
+var legend_que = document.getElementById("qNumber");
+legend_que.innerHTML = count_ques + "/" + nQuestions;
 
-function hideSymbols()
-{
+//score of user
+var score = 0;
+
+
+/**
+ * Hiding the correct and incorrect images (to be used later)
+ */
+function hideSymbols() {
     document.getElementById("correct").style.display = "none";
     document.getElementById("incorrect").style.display = "none";
 }
 
-function next()
-{
+/**
+ * Loads the next question
+ */
+function next() {
     hideSymbols();
     var flag = false;
     var rand;
-    if (count_ques<nQuestions)
-    {
-        while (!flag) {
-            rand = Math.floor((Math.random() * 10)); //random number from 1 to 10
-            flag=checkPast(rand);
+    //if there more questions
+    if (count_ques < nQuestions) {
+        while (!flag) {//getting random numbers till a not answered question
+            rand = Math.floor((Math.random() * 10)); //random number from 1 to 10 - getting a random question number
+            flag = checkPast(rand);//checking if question already appeared
         }
-        if (flag)
-        {
-            current_form.style.display ="none";
-            var next_form=document.getElementById(questions[rand]);
-            next_form.style.display = "inline-block";
-            current_form=next_form;
-            count_ques ++;
-            legend_que.innerHTML = count_ques + "/" + nQuestions;
-            past_ques.push(rand);
+        if (flag) {
+            current_form.style.display = "none";//hide the current question
+            var next_form = document.getElementById(questions[rand]);//get the next question
+            next_form.style.display = "inline-block";//show the question
+            current_form = next_form;
+            count_ques++;
+            legend_que.innerHTML = count_ques + "/" + nQuestions;//changing the number of current question
+            past_ques.push(rand);//push the question id into the answered questions
         }
 
     }
-    else
-    {
-        legend_que.style.display = "none";
-        var check_button= document.getElementById("checkButton");
+    else {//if no more questions
+        legend_que.style.display = "none";//hide the question number
+        var check_button = document.getElementById("checkButton");//changing the button text to Try again
         check_button.innerHTML = "Try Again";
-        showScore();
-        check_button.onclick = reload;
+        showScore();//show the score div
+        check_button.onclick = reload;// reload the page if try again button is pressed
 
     }
 }
-function reload()
-{
-    location.reload(true);
+/**
+ * reloading the page playing the quiz again
+ */
+function reload() {
+    location.reload(true);//
 }
-
-function checkPast(rand)
-{
-    for (var i=0;i<past_ques.length;i++)
-    {
-        if(rand === past_ques[i])
-        {
+/**
+ * Check if the rand(ID) already exist on the answered questions
+ * @param rand - id of random question's ID
+ * @returns {boolean} True - if doesnt exist , False- if already exists
+ */
+function checkPast(rand) {
+    for (var i = 0; i < past_ques.length; i++) {
+        if (rand === past_ques[i]) {
             return false;
         }
     }
     return true;
 }
 
-var http= getXMLHttpRequest();
+//For ajax
+var http = getXMLHttpRequest();
 
-function initializeAjax()
-{
+/**
+ * Initialisation of Ajax
+ */
+function initializeAjax() {
     var check_button = document.getElementById("checkButton");
-    check_button.onclick= checkAnswer;
+    check_button.onclick = checkAnswer;//when check answered is pressed
 }
-
-function getXMLHttpRequest()
-{
+/**
+ * getting the Ajax request
+ * @returns {*}
+ */
+function getXMLHttpRequest() {
     var request;
-    if(window.XMLHttpRequest) {
+    if (window.XMLHttpRequest) {
         request = new XMLHttpRequest();
     } else {
         request = new ActiveXObject("Microsoft.XMLHTTP");
     }
     return request;
 }
-
-function getResponse(ID,Answer)
-{
-    var myURL= "getAnswer.php?ID=" + ID + "&An=" + Answer;
-    http.open("GET",myURL);
+/**
+ * Get the response of the Ajax
+ * @param ID - id of the current question
+ * @param Answer - User answer of the current question
+ */
+function getResponse(ID, Answer) {
+    var myURL = "getAnswer.php?ID=" + ID + "&An=" + Answer; // Url with 2 arguments - the Id of the question and the
+    //user's answer
+    http.open("GET", myURL);
     http.onreadystatechange = useHttpResponse;
     http.send();
 }
-
-function useHttpResponse()
-{
-    if (http.readyState == 4) {
-        if (http.status == 200) {
+/**
+ * Using the http (Ajax) response
+ */
+function useHttpResponse() {
+    if (http.readyState == 4) {//request finished and response is ready
+        if (http.status == 200) { //everything OK
             showResult(http.responseText);
         }
     }
 }
-
-function checkAnswer()
-{
-    var ID= current_form.getAttribute("id").substring(8)//to get the id of the form
-    var radios = document.getElementsByName("answer" + ID);//getting current answers
+/**
+ * Checking the user's answer
+ */
+function checkAnswer() {
+    var ID = current_form.getAttribute("id").substring(8);//Get the id of the form by cropping the form's ID
+    var radios = document.getElementsByName("answer" + ID);//getting user's answer
     var flag = false;
-    for (var i=0; i< radios.length; i++)
-    {
-        if(radios[i].checked)
-        {
-            getResponse(ID,i+1);
-            flag=true;
+    for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            getResponse(ID, i + 1);//getting the server response
+            flag = true;
             break;
         }
     }
-    if (!flag)
-    {
+    if (!flag) {//in case the user's didn't choose a radio button
         alert("You must choose an answer");
     }
 
 }
-
-function showResult(result)
-{
-    if (result == 1)
-    {
-        document.getElementById("correct").style.display = "inline";
-        score += 1;
+/**
+ * Showing if the answer was correct or incorrect by showing the img
+ * @param result the result of the server
+ */
+function showResult(result) {
+    if (result == 1) {
+        document.getElementById("correct").style.display = "inline"; //showing the "correct" image
+        score += 1;//updating the score
     }
-    else
-    {
-        document.getElementById("incorrect").style.display = "inline";
+    else {
+        document.getElementById("incorrect").style.display = "inline"; //showing the "incorrect" image
     }
-    setTimeout(next,1500);
+    setTimeout(next, 1500);//timeout till the next question appears
 }
-function showScore()
-{
-    current_form.style.display = "none";
-    var quiztext=document.getElementById("score");
-    quiztext.style.display = "block";
-    if(score<4)
-    {
-        quiztext.innerHTML="<h2>Score: "+ (score/nQuestions)*100 +"%</h2><br><h3>Are you sure you have ever heard of Arctic Monkeys?</h3>";
+/**
+ * Shows the final score of the user
+ */
+function showScore() {
+    current_form.style.display = "none";//hides the current and last qustion
+    var quiztext = document.getElementById("score");//get score element
+    quiztext.style.display = "block";//shows the score element
+    //depending on the score shows the specified message with the percent
+    if (score < 4) {
+        quiztext.innerHTML = "<h2>Score: " + (score / nQuestions) * 100 + "%</h2><br><h3>Are you sure you have ever heard of Arctic Monkeys?</h3>";
     }
-    else if(score<7)
-    {
-        quiztext.innerHTML="<h2>Score: "+ (score/nQuestions)*100 +"%</h2><br><h3>Let's hope it wasn't luck, listen to more songs</h3>";
+    else if (score < 7) {
+        quiztext.innerHTML = "<h2>Score: " + (score / nQuestions) * 100 + "%</h2><br><h3>Let's hope it wasn't luck, listen to more songs</h3>";
     }
-    else if(score<10)
-    {
-        quiztext.innerHTML="<h2>Score: "+ (score/nQuestions)*100 +"%</h2><br><h3>Well well, what we have here? A crazy fan indeed</h3>";
+    else if (score < 10) {
+        quiztext.innerHTML = "<h2>Score: " + (score / nQuestions) * 100 + "%</h2><br><h3>Well well, what we have here? A crazy fan indeed</h3>";
     }
-    else
-    {
-        quiztext.innerHTML="<h2>Score: "+ (score/nQuestions)*100 +"%</h2><br><h3>Alex, is that you?</h3>";
+    else {
+        quiztext.innerHTML = "<h2>Score: " + (score / nQuestions) * 100 + "%</h2><br><h3>Alex, is that you?</h3>";
     }
-    var img = document.createElement("img");
+    var img = document.createElement("img");//creates and image to fill the space
     img.src = "images/avatars.png";
-    img.alt="Avatars";
-    img.id="avatars";
+    img.alt = "Avatars";
+    img.id = "avatars";
     quiztext.appendChild(img);
 }
