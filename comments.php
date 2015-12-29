@@ -63,7 +63,7 @@
 					$row = mysqli_fetch_array($result);
 					$total = $row[0];
 
-					$limit = 2; // Comments per page
+					$limit = 10; // Comments per page
 					
 					/* Number of pages needed for all comments */
 					$totalPages = ceil($total / $limit);
@@ -77,17 +77,27 @@
 						} elseif($currentPage > $totalPages) {
 							$currentPage = $totalPages;
 						} 
-						$offset = ($currentPage-1) * $limit; // Calculate next page's offset
-					} else { // Uninitialized
+						$offset = $total - $currentPage * $limit; // Calculate next page's offset
+						if($offset < 0) { // Last page results
+							$limit = -$offset;							
+							$offset = 0;
+						}
+					} else { // Uninitialized - First page results
 						$currentPage = 1;
-						$offset = 0;
+						$offset = $total - $limit; // e.g. for total records 21 and limit 4 per page the first page presents records 18,19,20,21
 					}
 					
-					$query = "SELECT * FROM comments LIMIT $limit OFFSET $offset";
+					$query = "SELECT * FROM (SELECT * FROM comments LIMIT $limit OFFSET $offset) AS T1 ORDER BY id DESC";
 					$results = mysqli_query($link, $query);
+					if (!$results) {
+						printf("Error: %s\n", mysqli_error($link));
+						exit();
+					}
+
 					while ($row = mysqli_fetch_assoc($results)) {
 						$email = htmlspecialchars($row['email']); // Preventing XSS
 						$comment = htmlspecialchars($row['comment']); // Preventing XSS
+						$id = htmlspecialchars($row['id']);
 						$timestamp = date('j F Y',strtotime(htmlspecialchars($row['timestamp'])));
 						if($email == "") {
 							$email = "Anonymous";
@@ -95,6 +105,7 @@
 						echo "<span id='commenter'>Commenter: </span><span>$email</span></br>";
 						echo "<span id='time'>$timestamp</span>";
 						echo "<p id='comment'>$comment</p>";
+						echo "<p>$id</p>";
 						echo "<hr>";
 					}	
 					
