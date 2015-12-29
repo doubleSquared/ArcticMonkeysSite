@@ -97,7 +97,6 @@
 					while ($row = mysqli_fetch_assoc($results)) {
 						$email = htmlspecialchars($row['email']); // Preventing XSS
 						$comment = htmlspecialchars($row['comment']); // Preventing XSS
-						$id = htmlspecialchars($row['id']);
 						$timestamp = date('j F Y',strtotime(htmlspecialchars($row['timestamp'])));
 						if($email == "") {
 							$email = "Anonymous";
@@ -105,7 +104,6 @@
 						echo "<span id='commenter'>Commenter: </span><span>$email</span></br>";
 						echo "<span id='time'>$timestamp</span>";
 						echo "<p id='comment'>$comment</p>";
-						echo "<p>$id</p>";
 						echo "<hr>";
 					}	
 					
