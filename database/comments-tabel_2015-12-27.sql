@@ -38,9 +38,9 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `email`, `comment`, `timestamp`) VALUES
-(10, 'sifantid@yahoo.gr', 'Desperate, aren''t you?', '2015-12-27 12:49:33'),
-(8, 's.yfantidou@gmail.com', 'This is a test comment!', '2015-12-17 18:31:18'),
 (7, 's.yfantidou@gmail.com', 'Sofia', '2015-12-17 18:31:02'),
+(8, 's.yfantidou@gmail.com', 'This is a test comment!', '2015-12-17 18:31:18'),
+(10, 'sifantid@yahoo.gr', 'Desperate, aren''t you?', '2015-12-27 12:49:33'),
 (11, 'sifantid@yahoo.gr', 'Desperate, aren''t you?', '2015-12-27 12:50:00'),
 (12, '', 'Soooooooo nice!', '2015-12-27 14:26:15');
 

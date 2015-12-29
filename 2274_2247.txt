@@ -1,0 +1,10 @@
+Arctic Monkeys Webpage - Εργασία Ανάπτυξης Ιστοχώρου - Μέρος Β
+
+Λαγόπουλος Αθανάσιος - 2274
+Υφαντίδου Σοφία - 2247
+
+URL: http://lathanag.webpages.auth.gr/arcticmonkeys
+
+URL zip file: 
+
+Το αρχείο .sql της βάσης περιλαμβάνεται στο zip file.
